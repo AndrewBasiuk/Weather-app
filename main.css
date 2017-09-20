@@ -67,7 +67,15 @@ body {
 
 .form {
   width: 80%;
-  height: 300px;
-  margin: 100px auto 0 100px;
+  height: 30px;
+  margin: 100px auto 0 auto;
   text-align: center;
+}
+
+.weather-info {
+  width: 17%;
+  margin: 30px auto 0 auto;
+}
+.weather-info__temp {
+  color: #fff;
 }
