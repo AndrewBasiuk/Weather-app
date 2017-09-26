@@ -9,20 +9,16 @@ $(document).ready(function() {
 
 		$.getJSON(weatherAPI, function(objektAPI) {
 			var dayList = objektAPI.list;
-			dayList.forEach( function(item, i) {
-				var temp = dayList[i*8+6].main.temp;
-				var date = dayList[i*8+6].dt_txt;
-				var el = "<li class='weather-info'>" + date + "</li>";
-				console.log(el);
-				// $('.weather-info').html(el);
+
+			var dateList = dayList.forEach( function(item, i) {
+				var temp = Math.round(dayList[i*8+6].main.temp),
+					date = dayList[i*8+6].dt_txt.slice(0, 10),
+					el = "<li class='weather-info__item'><p class='weather-info__paragraph'>" + date + " is " + temp + "°" + "</p></li>";
+
+				return $('.weather-info').append(el);
+				
 			});
 
-
-			// var weatherAPI = "http://api.openweathermap.org/data/2.5/weather?q="Kiev"&&APPID=fc3da5f655d9b4c55ce7786120594255&units=metric";	
-			// var temp = objektAPI.main.temp;
-			// $(".weather-info__temp").text(function() {
-			// 	return "Temperature: " + temp + " °";
-			// });
 		});
 	});
 

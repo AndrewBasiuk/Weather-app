@@ -73,9 +73,13 @@ body {
 }
 
 .weather-info {
-  width: 17%;
+  width: 35%;
   margin: 30px auto 0 auto;
 }
 .weather-info__temp {
   color: #fff;
+}
+.weather-info__item {
+  width: 100%;
+  margin-bottom: 10px;
 }
