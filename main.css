@@ -72,7 +72,8 @@ body {
   text-align: center;
 }
 
-.weather-info {
+.weather-info-wrap {
+  text-align: center;
   width: 35%;
   margin: 30px auto 0 auto;
 }
@@ -81,5 +82,11 @@ body {
 }
 .weather-info__item {
   width: 100%;
-  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.weather-info__heading {
+  color: #fff;
+  font-size: 1.3em;
+  font-family: "Times New Roman", serif;
 }
