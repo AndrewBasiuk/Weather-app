@@ -62,13 +62,22 @@ a:visited {
   clear: both; }
 
 body {
-  background-color: green;
+  background-color: #018B4F;
+}
+
+.main-heading {
+  font-size: 3em;
+  font-family: Georgia;
+  text-align: center;
+  margin: 75px 0;
+  text-transform: uppercase;
+  color: #182F7F;
 }
 
 .form {
   width: 80%;
   height: 30px;
-  margin: 100px auto 0 auto;
+  margin: 25px auto 0 auto;
   text-align: center;
 }
 
@@ -77,16 +86,21 @@ body {
   width: 35%;
   margin: 30px auto 0 auto;
 }
-.weather-info__temp {
-  color: #fff;
-}
+
 .weather-info__item {
   width: 100%;
   margin-top: 10px;
 }
 
-.weather-info__heading {
+.weather-indo__now {
   color: #fff;
   font-size: 1.3em;
+  font-family: "Times New Roman", serif;
+  margin-bottom: 30px;
+}
+
+.weather-info__heading {
+  color: #CEC101;
+  font-size: 1em;
   font-family: "Times New Roman", serif;
 }
