@@ -11,11 +11,16 @@ $(document).ready(function() {
 
 		$('.weather-info__heading').text(inputBigLetter + " weather for 5 days");
 		$('.weather-info__item').remove();
+		$('.weather-info-now__image').remove();
 
 		$.getJSON(weatherNow, function(objektAPI) {
-			var temp = objektAPI.main.temp;
-			$('.weather-indo__now').text("Now in " + inputBigLetter + "  " + temp + "°");
-			console.log(objektAPI);
+			var temp = Math.round(objektAPI.main.temp);
+			var weatherIcon = objektAPI.weather[0].icon;
+			var imgLink = "http://openweathermap.org/img/w/" + weatherIcon + ".png";
+
+
+			$('.weather-indo-now__text').text("Now in " + inputBigLetter + "  " + temp + "°");
+			$('.weather-indo-now').append("<img src=" + imgLink + " alt='icon' class='weather-info-now__image'>");
 		});
 
 		$.getJSON(weatherFiveDays, function(objektAPI) {
@@ -23,8 +28,13 @@ $(document).ready(function() {
 
 			dayList.forEach( function(item, i) {
 				var temp = Math.round(dayList[i*8+6].main.temp),
-					date = dayList[i*8+6].dt_txt.slice(0, 10),
-					el = "<li class='weather-info__item'><p class='weather-info__paragraph'>" + date + " is " + temp + "°" + "</p></li>";
+					 date = dayList[i*8+6].dt_txt.slice(0, 10),
+					 weatherIcon = dayList[i*8+6].weather[0].icon,
+					 imgLink = "http://openweathermap.org/img/w/" + weatherIcon + ".png",
+					 paragraph = "<p class='weather-info__paragraph'>" + date + " is " + temp + "°" + "</p>",
+					 image = "<img src=" + imgLink + " alt='icon' class='weather-info__image'>",
+					 el = "<li class='weather-info__item'>" + paragraph + image + "</li>";
+					 console.log(weatherIcon);
 				return $('.weather-info-list').append(el);
 			});
 		});
