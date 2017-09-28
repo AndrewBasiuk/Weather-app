@@ -82,14 +82,14 @@ body {
 }
 
 .weather-info-wrap {
-  text-align: center;
+  
   width: 35%;
   margin: 30px auto 0 auto;
 }
 
 .weather-info__item {
   position: relative;
-  width: 40%;
+  width: 32%;
   margin: 0 auto;
   margin-top: 10px;
 }
@@ -103,9 +103,16 @@ body {
   height: 30px;
 }
 
+.weather-info__paragraph {
+  display: inline-block;
+}
+
 .weather-indo-now {
   position: relative;
+  width: 32%;
+  margin: 0 auto 30px auto;
   margin-bottom: 30px;
+  text-align: center;
 }
 
 .weather-indo-now__text {
@@ -125,6 +132,7 @@ body {
 
 .weather-info__heading {
   color: #CEC101;
-  font-size: 1em;
+  font-size: 1.1em;
   font-family: "Times New Roman", serif;
+  text-align: center;
 }
