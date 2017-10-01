@@ -109,9 +109,8 @@ body {
 
 .weather-indo-now {
   position: relative;
-  width: 32%;
+  width: 100%;
   margin: 0 auto 30px auto;
-  margin-bottom: 30px;
   text-align: center;
 }
 
