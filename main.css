@@ -63,6 +63,8 @@ a:visited {
 
 body {
   background-color: #018B4F;
+  background: url(img/autumn.jpg) no-repeat;
+  background-size: cover;
 }
 
 .main-heading {
@@ -71,67 +73,102 @@ body {
   text-align: center;
   margin: 75px 0;
   text-transform: uppercase;
-  color: #182F7F;
+  color: #f27100;
+  text-shadow: 1px 1px 2px black, 0 0 1em red;
+  font-weight: bold;
 }
 
 .form {
-  width: 80%;
-  height: 30px;
-  margin: 25px auto 0 auto;
+  width: 100%;
+  margin: 0 auto;
   text-align: center;
+}
+.form__input {
+  font-size: 0.9em;
+  font-weight: bold;
+  height: 29px;
+  border: 1px solid #fff;
+  box-sizing: border-box;
+  padding-left: 5px;
+}
+.form__button {
+  background-color: transparent;
+  color: #fff;
+  font-weight: bold;
+  border: 2px solid #f27100;
+  height: 30px;
+  width: 7%;
+  box-sizing: border-box;
+  transition: all 0.3s;
+  cursor: pointer;
+  outline: none;
+}
+.form__button:hover {
+  color: #f27100;
+  background-color: #fff;
+  border: none;
 }
 
 .weather-info-wrap {
-  
   width: 35%;
-  margin: 30px auto 0 auto;
-}
-
-.weather-info__item {
-  position: relative;
-  width: 32%;
-  margin: 0 auto;
-  margin-top: 10px;
-}
-
-.weather-info__image {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 30px;
-  height: 30px;
-}
-
-.weather-info__paragraph {
-  display: inline-block;
+  margin: 35px auto 0 auto;
 }
 
 .weather-indo-now {
   position: relative;
   width: 100%;
   margin: 0 auto 30px auto;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .weather-indo-now__text {
   display: inline-block;
   color: #fff;
-  font-size: 1.3em;
+  font-size: 2em;
   font-family: "Times New Roman", serif;
+  margin-left: 4%;
 }
 
 .weather-info-now__image {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
 }
 
 .weather-info__heading {
-  color: #CEC101;
-  font-size: 1.1em;
-  font-family: "Times New Roman", serif;
+  color: #00ba1a;
+  font-size: 1.2em;
+  font-family: Georgia, serif;
   text-align: center;
+}
+
+.weather-info__item {
+  float: left;
+  width: 32%;
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.weather-info__date {
+  color: #fff;
+  font-size: 1.125em;
+}
+
+.weather-info__value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1em;
+}
+
+.weather-info__image {
+/*  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);*/
+  width: 30px;
+  height: 30px;
 }

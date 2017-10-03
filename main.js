@@ -31,9 +31,11 @@ $(document).ready(function() {
 					 date = dayList[i*8+6].dt_txt.slice(0, 10),
 					 weatherIcon = dayList[i*8+6].weather[0].icon,
 					 imgLink = "http://openweathermap.org/img/w/" + weatherIcon + ".png",
-					 paragraph = "<p class='weather-info__paragraph'>" + date + " is " + temp + "°" + "</p>",
+					 dateParagraph = "<p class='weather-info__date'>" + date + "</p>",
+					 tempParagraph = "<p class='weather-info__paragraph'>" + temp +  "°" + "</p>",
 					 image = "<img src=" + imgLink + " alt='icon' class='weather-info__image'>",
-					 el = "<li class='weather-info__item'>" + paragraph + image + "</li>";
+					 weatherValue = "<div class='weather-info__value'>" + tempParagraph + image + "</div>",
+					 el = "<li class='weather-info__item'>" + dateParagraph + weatherValue + "</li>";
 
 				return $('.weather-info-list').append(el);
 			});
