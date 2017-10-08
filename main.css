@@ -63,7 +63,7 @@ a:visited {
 
 body {
   background-color: #018B4F;
-  background: url(img/autumn.jpg) no-repeat;
+  background: url(img/autumn1.jpg) no-repeat;
   background-size: cover;
 }
 
@@ -73,8 +73,9 @@ body {
   text-align: center;
   margin: 75px 0;
   text-transform: uppercase;
-  color: #f27100;
-  text-shadow: 1px 1px 2px black, 0 0 1em red;
+  /*color: #f27100;*/
+  color: #f2de00;
+  text-shadow: 1px 1px 2px black, 0 0 1em gray;
   font-weight: bold;
 }
 
@@ -93,7 +94,7 @@ body {
 }
 .form__button {
   background-color: transparent;
-  color: #fff;
+  color: #000;
   font-weight: bold;
   border: 2px solid #f27100;
   height: 30px;
@@ -114,7 +115,7 @@ body {
   margin: 35px auto 0 auto;
 }
 
-.weather-indo-now {
+.weather-info-now {
   position: relative;
   width: 100%;
   margin: 0 auto 30px auto;
@@ -123,7 +124,7 @@ body {
   align-items: center;
 }
 
-.weather-indo-now__text {
+.weather-info-now__text {
   display: inline-block;
   color: #fff;
   font-size: 2em;
@@ -140,6 +141,7 @@ body {
   color: #00ba1a;
   font-size: 1.2em;
   font-family: Georgia, serif;
+  font-weight: bold;
   text-align: center;
 }
 
@@ -165,10 +167,6 @@ body {
 }
 
 .weather-info__image {
-/*  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);*/
   width: 30px;
   height: 30px;
 }

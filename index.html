@@ -17,17 +17,17 @@
 
     <h1 class="main-heading">Weather in you're city</h1>
 
-    <div class="form">
-      <input type="text" class="form__input" placeholder="Enter you're city">
-      <button class="form__button" type="submit">Watch</button>
-    </div>
+    <form id="form" class="form">
+      <input type="text" id="form__input" class="form__input" placeholder="Enter you're city">
+      <button id="form__button" class="form__button" type="submit">Watch</button>
+    </form>
 
     <div class="weather-info-wrap">
-      <div class="weather-indo-now">
-        <p class="weather-indo-now__text"></p>
+      <div class="weather-info-now" id="weather-info-now">
+        <p class="weather-info-now__text" id="weather-info-now__text"></p>
       </div>
-      <h6 class="weather-info__heading"></h6>
-      <ul class="weather-info-list">
+      <h6 class="weather-info__heading" id="weather-info__heading"></h6>
+      <ul class="weather-info-list" id="weather-info-list">
       </ul>
     </div>
 
@@ -35,7 +35,7 @@
 
 
 
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
