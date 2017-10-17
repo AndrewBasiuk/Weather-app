@@ -2,10 +2,14 @@ function showWeather(e) {
 	e.preventDefault();
 
 	var input = document.getElementById('form__input').value,
-	inputBigLetter = input.charAt(0).toUpperCase() + input.slice(1),
-	weatherFiveDays = 'http://api.openweathermap.org/data/2.5/forecast?q=' + inputBigLetter + '&appid=fc3da5f655d9b4c55ce7786120594255&units=metric',
-	weatherNow = "http://api.openweathermap.org/data/2.5/weather?q=" + inputBigLetter + "&appid=fc3da5f655d9b4c55ce7786120594255&units=metric";
+		inputBigLetter = input.charAt(0).toUpperCase() + input.slice(1),
+		weatherFiveDays = 'http://api.openweathermap.org/data/2.5/forecast?q=' + inputBigLetter + '&appid=fc3da5f655d9b4c55ce7786120594255&units=metric',
+		weatherNow = "http://api.openweathermap.org/data/2.5/weather?q=" + inputBigLetter + "&appid=fc3da5f655d9b4c55ce7786120594255&units=metric";
 
+	// доступ к элементам DOM
+	var weatherInfoNow = document.getElementById('weather-info-now'),
+		weatherInfoNowText = document.getElementById('weather-info-now__text'),
+		weatherInfoList = document.getElementById('weather-info-list');
 
 	axios.get(weatherNow)
 	  .then(function (response) {
@@ -15,15 +19,18 @@ function showWeather(e) {
 			weatherIcon = response.data.weather[0].icon,
 			imgLink = "http://openweathermap.org/img/w/" + weatherIcon + ".png";
 
-		var weatherInfoNow = document.getElementById('weather-info-now');
-		var weatherInfoNowText = document.getElementById('weather-info-now__text');
 		var weatherInfoNowImage = document.createElement('img');
 		weatherInfoNowImage.className = "weather-info-now__image";
 		weatherInfoNowImage.setAttribute('src', imgLink);
 
-
 		weatherInfoNowText.innerHTML = "Now in " + inputBigLetter + "  " + temp + "°";
 		weatherInfoNow.appendChild(weatherInfoNowImage);
+		
+
+		if(weatherInfoNow.children.length == 3) {
+			weatherInfoNow.removeChild(weatherInfoNow.children[1]);
+		}	
+
 	  })
 	  .catch(function (error) {
 	    console.log(error);
@@ -42,7 +49,6 @@ function showWeather(e) {
 				weatherIcon = dayList[selection].weather[0].icon,
 				imgLink = "http://openweathermap.org/img/w/" + weatherIcon + ".png";
 
-			var weatherInfoList = document.getElementById('weather-info-list');
 
 			var weatherInfoListItem = document.createElement('li');
 			weatherInfoListItem.className = "weather-info__item";
@@ -56,11 +62,12 @@ function showWeather(e) {
 			weatherInfoTemp.innerHTML = temp + "°";
 
 			var weatherInfoImage = document.createElement('img');
-			weatherInfoImage.setAttribute("src", imgLink);
 			weatherInfoImage.className = "weather-info__image";
+			weatherInfoImage.setAttribute("src", imgLink);
 
 			var weatherInfoValue = document.createElement('div');
 			weatherInfoValue.className = "weather-info__value";
+
 			weatherInfoValue.appendChild(weatherInfoTemp);
 			weatherInfoValue.appendChild(weatherInfoImage);
 
@@ -68,17 +75,43 @@ function showWeather(e) {
 			weatherInfoListItem.appendChild(weatherInfoDate);
 			weatherInfoListItem.appendChild(weatherInfoValue);
 
+
+		// if(a => 5) {
+		// 	weatherInfoList.removeChild(weatherInfoList.children[a < 10]);
+		// }
+
+
+
 	  	});
+
+
 	  })
+
 
 	  .catch(function(error) {
 	  	console.log(error);
 	  })
 
+		console.log(weatherInfoList.children.length);
+
 };
 
 var form = document.getElementById('form');
 form.addEventListener('submit', showWeather, false);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
