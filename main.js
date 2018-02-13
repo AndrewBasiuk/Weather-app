@@ -1,12 +1,25 @@
+function newElement(tag, nameClass, nameAttr, valueAttr) {
+	var element = document.createElement(tag);
+	element.className = nameClass;
+	if(nameAttr) {
+		element.setAttribute(nameAttr, valueAttr);
+	}
+	return element;
+}
+
+
+
+
 function showWeather(e) {
 	e.preventDefault();
+
 
 	var input = document.getElementById('form__input').value,
 		inputBigLetter = input.charAt(0).toUpperCase() + input.slice(1),
 		weatherFiveDays = 'http://api.openweathermap.org/data/2.5/forecast?q=' + inputBigLetter + '&appid=fc3da5f655d9b4c55ce7786120594255&units=metric',
 		weatherNow = "http://api.openweathermap.org/data/2.5/weather?q=" + inputBigLetter + "&appid=fc3da5f655d9b4c55ce7786120594255&units=metric";
 
-	// доступ к элементам DOM
+	// select elements of DOM
 	var weatherInfoNow = document.getElementById('weather-info-now'),
 		weatherInfoNowText = document.getElementById('weather-info-now__text'),
 		weatherInfoList = document.getElementById('weather-info-list');
@@ -19,17 +32,15 @@ function showWeather(e) {
 			weatherIcon = response.data.weather[0].icon,
 			imgLink = "http://openweathermap.org/img/w/" + weatherIcon + ".png";
 
-		var weatherInfoNowImage = document.createElement('img');
-		weatherInfoNowImage.className = "weather-info-now__image";
-		weatherInfoNowImage.setAttribute('src', imgLink);
-
+		var weatherInfoNowImage = newElement("img", "weather-info-now__image", "src", imgLink);
 		weatherInfoNowText.innerHTML = "Now in " + inputBigLetter + "  " + temp + "°";
 		weatherInfoNow.appendChild(weatherInfoNowImage);
-		
-
 		if(weatherInfoNow.children.length == 3) {
-			weatherInfoNow.removeChild(weatherInfoNow.children[1]);
+			weatherInfoNow.children[1].remove();
 		}	
+
+		var weatherInfoHeading = document.getElementById('weather-info__heading');
+		weatherInfoHeading.innerHTML = inputBigLetter + " weather for 5 days";
 
 	  })
 	  .catch(function (error) {
@@ -40,7 +51,7 @@ function showWeather(e) {
 	axios.get(weatherFiveDays)
 	  .then(function(response) {
 	  	var dayList = response.data.list;
-
+	  
 	  	dayList.forEach(function(item, i) {
 	  		var selection = i*8+6;
 
@@ -49,39 +60,29 @@ function showWeather(e) {
 				weatherIcon = dayList[selection].weather[0].icon,
 				imgLink = "http://openweathermap.org/img/w/" + weatherIcon + ".png";
 
+			// clear weatherInfoListItem
+			if (weatherInfoList.children.length > 4 ) {     //what happend here??? 
+				weatherInfoList.children[0].remove();
+			}
 
-			var weatherInfoListItem = document.createElement('li');
-			weatherInfoListItem.className = "weather-info__item";
 
-			var weatherInfoDate = document.createElement('p');
-			weatherInfoDate.className = "weather-info__date";
+
+			// create new elements
+			var weatherInfoListItem = newElement("li", "weather-info__item");
+			var weatherInfoDate = newElement("p", "weather-info__date");
 			weatherInfoDate.innerHTML = date;
-
-			var weatherInfoTemp = document.createElement('p');
-			weatherInfoTemp.className = "weather-info__temp";
+			var weatherInfoTemp = newElement("p", "weather-info__temp");
 			weatherInfoTemp.innerHTML = temp + "°";
+			var weatherInfoImage = newElement("img", "weather-info__image", "src", imgLink);
+			var weatherInfoValue = newElement("div", "weather-info__value");
 
-			var weatherInfoImage = document.createElement('img');
-			weatherInfoImage.className = "weather-info__image";
-			weatherInfoImage.setAttribute("src", imgLink);
-
-			var weatherInfoValue = document.createElement('div');
-			weatherInfoValue.className = "weather-info__value";
-
+			// add new elements to DOM tree
 			weatherInfoValue.appendChild(weatherInfoTemp);
 			weatherInfoValue.appendChild(weatherInfoImage);
 
 			weatherInfoList.appendChild(weatherInfoListItem);
 			weatherInfoListItem.appendChild(weatherInfoDate);
 			weatherInfoListItem.appendChild(weatherInfoValue);
-
-
-		// if(a => 5) {
-		// 	weatherInfoList.removeChild(weatherInfoList.children[a < 10]);
-		// }
-
-
-
 	  	});
 
 
@@ -92,17 +93,10 @@ function showWeather(e) {
 	  	console.log(error);
 	  })
 
-		console.log(weatherInfoList.children.length);
-
 };
 
 var form = document.getElementById('form');
 form.addEventListener('submit', showWeather, false);
-
-
-
-
-
 
 
 
